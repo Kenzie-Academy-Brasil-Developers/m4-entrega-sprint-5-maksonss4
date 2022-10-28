@@ -7,6 +7,6 @@ import AppDataSource from "./database/data-source";
   });
 
   app.listen(3000, () => {
-    console.log("Servidor executando");
+    console.log("Servidor executando na porta 3000");
   });
 })();

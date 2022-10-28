@@ -34,9 +34,6 @@ export class User {
   @UpdateDateColumn()
   updatedAt: Date;
 
-  @OneToMany((type) => Schedules_user_properties, (shed) => shed.user, {
-    // Aqui eu informo qual coluna da tabela se relaciona com Shedules
-    eager: true,
-  })
+  @OneToMany((type) => Schedules_user_properties, (shed) => shed.user)
   schedules: Schedules_user_properties[];
 }

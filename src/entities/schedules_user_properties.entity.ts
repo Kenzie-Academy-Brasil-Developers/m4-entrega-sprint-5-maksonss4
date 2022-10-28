@@ -13,13 +13,15 @@ export class Schedules_user_properties {
   @PrimaryGeneratedColumn("uuid")
   readonly id: string;
 
-  @Column()
+  @Column({ type: "date" })
   date: Date;
 
   @Column({ type: "time" })
   hour: Date;
 
-  @ManyToOne((type) => User, (user) => user.schedules)
+  @ManyToOne((type) => User, {
+    eager: true,
+  })
   user: User;
 
   @ManyToOne((type) => Properties, (prop) => prop.schedules)

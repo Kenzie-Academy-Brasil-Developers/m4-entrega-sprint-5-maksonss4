@@ -5,12 +5,14 @@ import { userRoutes } from "./routes/user.routes";
 import { AppError } from "./errors/appError";
 import { categoriesRoutes } from "./routes/categories.routes";
 import { propertiesRoutes } from "./routes/properties.routes";
+import { schedulesRoutes } from "./routes/schedules.routes";
 
 const app = express();
 app.use(express.json());
 app.use("", userRoutes);
 app.use("", categoriesRoutes);
 app.use("", propertiesRoutes);
+app.use("", schedulesRoutes);
 
 app.use((err: Error, request: Request, response: Response, _: NextFunction) => {
   if (err instanceof AppError) {

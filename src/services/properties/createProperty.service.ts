@@ -29,6 +29,22 @@ export async function createPropertyService({
   }
 
   const { city, district, number, state, zipCode } = address;
+
+  const baseAddress = await addressesRespository.find();
+  const existZipCodeAddress = baseAddress.filter((a) => {
+    return a.zipCode === zipCode + "";
+  });
+
+  if (existZipCodeAddress.length > 0) {
+    const existNumberZipCode = existZipCodeAddress.find((a) => {
+      return a.number === number + "";
+    });
+
+    if (existNumberZipCode) {
+      throw new AppError(400, "Propriedade já existe");
+    }
+  }
+
   const newAddress = new Addresses();
   newAddress.city = city;
   newAddress.district = district;
